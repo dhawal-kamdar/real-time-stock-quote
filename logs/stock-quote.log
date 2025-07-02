@@ -1,0 +1,37 @@
+2025-07-03 04:04:12 [INFO] - Starting RealTimeStockQuoteApplication using Java 24.0.1 with PID 6852 (D:\Dhawal\real-time-stock-quote\target\classes started by home in D:\Dhawal\real-time-stock-quote)
+2025-07-03 04:04:12 [DEBUG] - Running with Spring Boot v3.5.3, Spring v6.2.8
+2025-07-03 04:04:12 [INFO] - No active profile set, falling back to 1 default profile: "default"
+2025-07-03 04:04:14 [INFO] - Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2025-07-03 04:04:14 [INFO] - For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2025-07-03 04:04:21 [INFO] - Tomcat initialized with port 8080 (http)
+2025-07-03 04:04:21 [INFO] - Starting service [Tomcat]
+2025-07-03 04:04:21 [INFO] - Starting Servlet engine: [Apache Tomcat/10.1.42]
+2025-07-03 04:04:22 [INFO] - Initializing Spring embedded WebApplicationContext
+2025-07-03 04:04:22 [INFO] - Root WebApplicationContext: initialization completed in 8072 ms
+2025-07-03 04:04:26 [INFO] - LiveReload server is running on port 35729
+2025-07-03 04:04:26 [INFO] - Tomcat started on port 8080 (http) with context path '/'
+2025-07-03 04:04:26 [INFO] - Started RealTimeStockQuoteApplication in 19.037 seconds (process running for 22.987)
+2025-07-03 04:04:34 [INFO] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+2025-07-03 04:04:34 [INFO] - Initializing Servlet 'dispatcherServlet'
+2025-07-03 04:04:34 [INFO] - Completed initialization in 2 ms
+2025-07-03 04:04:34 [INFO] - API call: /quote/AAPL
+2025-07-03 04:04:34 [INFO] - Fetching stock quote for symbol: AAPL
+2025-07-03 04:04:34 [DEBUG] - API URI: https://www.alphavantage.co/query?function=GLOBAL_QUOTE&symbol=AAPL&apikey=4LLUKIFVESEORQAB
+2025-07-03 04:04:47 [INFO] - Fetched stock quote for symbol: AAPL = StockQuote(symbol=AAPL, open=208.91, high=213.34, low=208.14, price=212.44, volume=67708479, latestTradingDay=2025-07-02, previousClose=207.82, change=4.62, percentChange=2.2231%)
+2025-07-03 04:04:47 [DEBUG] - API response for AAPL: StockQuote(symbol=AAPL, open=208.91, high=213.34, low=208.14, price=212.44, volume=67708479, latestTradingDay=2025-07-02, previousClose=207.82, change=4.62, percentChange=2.2231%)
+2025-07-03 04:05:50 [INFO] - API call: /quotes with symbols: [AAPL, GOOG, TSLA]
+2025-07-03 04:05:50 [INFO] - Fetching batch stock quote for symbols: [AAPL, GOOG, TSLA]
+2025-07-03 04:05:50 [INFO] - Fetching stock quote for symbol: AAPL
+2025-07-03 04:05:50 [DEBUG] - API URI: https://www.alphavantage.co/query?function=GLOBAL_QUOTE&symbol=AAPL&apikey=4LLUKIFVESEORQAB
+2025-07-03 04:05:51 [INFO] - Fetched stock quote for symbol: AAPL = StockQuote(symbol=AAPL, open=208.91, high=213.34, low=208.14, price=212.44, volume=67708479, latestTradingDay=2025-07-02, previousClose=207.82, change=4.62, percentChange=2.2231%)
+2025-07-03 04:05:51 [DEBUG] - Fetched stock quote for symbol: AAPL
+2025-07-03 04:05:51 [INFO] - Fetching stock quote for symbol: GOOG
+2025-07-03 04:05:51 [DEBUG] - API URI: https://www.alphavantage.co/query?function=GLOBAL_QUOTE&symbol=GOOG&apikey=4LLUKIFVESEORQAB
+2025-07-03 04:05:51 [INFO] - Fetched stock quote for symbol: GOOG = StockQuote(symbol=GOOG, open=176.545, high=179.935, low=176.09, price=179.76, volume=19222307, latestTradingDay=2025-07-02, previousClose=176.91, change=2.85, percentChange=1.6110%)
+2025-07-03 04:05:51 [DEBUG] - Fetched stock quote for symbol: GOOG
+2025-07-03 04:05:51 [INFO] - Fetching stock quote for symbol: TSLA
+2025-07-03 04:05:51 [DEBUG] - API URI: https://www.alphavantage.co/query?function=GLOBAL_QUOTE&symbol=TSLA&apikey=4LLUKIFVESEORQAB
+2025-07-03 04:05:52 [INFO] - Fetched stock quote for symbol: TSLA = StockQuote(symbol=TSLA, open=312.63, high=316.832, low=303.82, price=315.65, volume=118516668, latestTradingDay=2025-07-02, previousClose=300.71, change=14.94, percentChange=4.9682%)
+2025-07-03 04:05:52 [DEBUG] - Fetched stock quote for symbol: TSLA
+2025-07-03 04:05:52 [INFO] - Fetched batch stock quotes for symbols: 3
+2025-07-03 04:05:52 [DEBUG] - API response size: 3
