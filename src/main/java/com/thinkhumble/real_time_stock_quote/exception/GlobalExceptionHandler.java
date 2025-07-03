@@ -7,7 +7,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-@RestControllerAdvice
+@RestControllerAdvice(basePackages = "com.thinkhumble.real_time_stock_quote")
 public class GlobalExceptionHandler {
 
     private static final Logger logger = LoggerFactory.getLogger(GlobalExceptionHandler.class);
@@ -17,6 +17,13 @@ public class GlobalExceptionHandler {
         logger.error("StockQuoteException Occured: " + ex.getMessage());
         return ResponseEntity.status(HttpStatus.BAD_REQUEST)
                 .body("Stock API Error: " + ex.getMessage());
+    }
+
+    @ExceptionHandler(IllegalArgumentException.class)
+    public ResponseEntity<String> handleIllegalArgumentException(IllegalArgumentException ex) {
+        logger.error("IllegalArgumentException Occured: " + ex.getMessage());
+        return ResponseEntity.status(HttpStatus.BAD_REQUEST)
+                .body("IllegalArgumentException: " + ex.getMessage());
     }
 
     @ExceptionHandler(Exception.class)

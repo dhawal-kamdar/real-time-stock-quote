@@ -1,23 +1,43 @@
 package com.thinkhumble.real_time_stock_quote.model;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
+import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
 @Data
+@Schema(description = "Represents a real-time stock quote with market data.")
 public class StockQuote {
 
-    @JsonProperty("symbol")
+    @Schema(description = "Stock symbol (e.g., AAPL, MSFT)", example = "AAPL")
     private String symbol;
+
+    @Schema(description = "Opening price of the stock for the trading day", example = "187.45")
     private double open;
+
+    @Schema(description = "Highest price during the trading day", example = "190.80")
     private double high;
+
+    @Schema(description = "Lowest price during the trading day", example = "186.20")
     private double low;
+
+    @Schema(description = "Current market price", example = "188.75")
     private double price;
+
+    @Schema(description = "Number of shares traded during the trading day", example = "45322103")
     private int volume;
+
+    @Schema(description = "Date of the latest trading day", example = "2025-07-02")
     private String latestTradingDay;
+
+    @Schema(description = "Price at the close of the previous trading day", example = "186.55")
     private double previousClose;
+
+    @Schema(description = "Price change since previous close", example = "2.20")
     private double change;
+
+    @Schema(description = "Percentage change since previous close", example = "1.18%")
     private String percentChange;
 
     public StockQuote() {}
