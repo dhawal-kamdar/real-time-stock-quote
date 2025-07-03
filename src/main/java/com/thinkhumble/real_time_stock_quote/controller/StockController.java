@@ -21,6 +21,10 @@ public class StockController {
 
     @GetMapping("/quote/{symbol}")
     public ResponseEntity<StockQuote> getQuoteBySymbol(@PathVariable String symbol) {
+        if (symbol == null || symbol.trim().isEmpty()) {
+            throw new IllegalArgumentException("Symbol must not be null or empty.");
+        }
+
         logger.info("API call: /quote/{}", symbol);
         StockQuote stockQuote = alphaVantageStockQuoteService.getQuoteBySymbol(symbol);
         logger.debug("API response for {}: {}", symbol, stockQuote);
@@ -30,6 +34,20 @@ public class StockController {
     @GetMapping("/quotes")
     public ResponseEntity<List<StockQuote>> getBatchQuotes(@RequestParam List<String> symbols) {
         logger.info("API call: /quotes with symbols: {}", symbols);
+
+        if (symbols == null || symbols.isEmpty()) {
+            throw new IllegalArgumentException("Symbols list must not be empty.");
+        }
+
+        // Filter out empty or blank symbols
+        List<String> validSymbols = symbols.stream()
+                .filter(s -> s != null && !s.trim().isEmpty())
+                .toList();
+
+        if (validSymbols.isEmpty()) {
+            throw new IllegalArgumentException("All symbols are invalid or empty.");
+        }
+
         List<StockQuote> quotes = alphaVantageStockQuoteService.getBatchQuotesBySymbols(symbols);
         logger.debug("API response size: {}", quotes.size());
         return ResponseEntity.ok(quotes);
