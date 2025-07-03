@@ -38,6 +38,10 @@ public class AlphaVantageStockQuoteService {
                 throw new StockQuoteException("Failed to parse stock quote - Stock API Error: " + root.get("Error Message").asText());
             }
 
+            if (root.has("Information")) {
+                throw new StockQuoteException("Stock API Information: " + root.get("Information").asText());
+            }
+
             if (quote.isMissingNode() || quote.size() == 0 || quote.path("01. symbol").asText().isEmpty()) {
                 throw new StockQuoteException("Failed to parse stock quote - No data found for the provided symbol.");
             }
