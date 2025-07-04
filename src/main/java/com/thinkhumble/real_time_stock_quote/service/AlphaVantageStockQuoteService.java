@@ -8,6 +8,7 @@ import com.thinkhumble.real_time_stock_quote.model.StockQuote;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.http.HttpStatusCode;
 import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -25,6 +26,9 @@ public class AlphaVantageStockQuoteService {
 
     @Autowired
     private StockApiConfig stockApiConfig;
+
+    @Autowired
+    private StockQuoteCachingService stockQuoteCachingService;
 
     private static final Logger logger = LoggerFactory.getLogger(AlphaVantageStockQuoteService.class);
 
@@ -66,7 +70,7 @@ public class AlphaVantageStockQuoteService {
         }
     }
 
-
+    @Cacheable(value = "quotes", key = "#symbol")
     public StockQuote getQuoteBySymbol(String symbol) {
         try {
             logger.info("Fetching stock quote for symbol: {}", symbol);
@@ -105,7 +109,7 @@ public class AlphaVantageStockQuoteService {
 
         for (String symbol : symbols) {
             try {
-                StockQuote quote = getQuoteBySymbol(symbol);
+                StockQuote quote = stockQuoteCachingService.getQuoteBySymbol(symbol);   // goes through cache
                 if (quote != null) {
                     stockQuoteList.add(quote);
                     logger.debug("Fetched stock quote for symbol: {}", symbol);
